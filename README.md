@@ -134,12 +134,16 @@ Deployed Link : https://freelancer-test-task-93he.onrender.com
 ```
 ## Deployment Note
 
+## Deployment Note
+
 This application is deployed on **Render (Free Tier)**.
 
-Please note that Render puts free services to sleep after a period of inactivity.  
-If you are accessing the API after some time, the **first request may take up to 30–40 seconds** while the service wakes up.
+Render automatically puts free services to sleep after a period of inactivity.  
+Because of this, the **first request after inactivity may take up to 30–40 seconds** while the service wakes up. Once the service is active, subsequent requests will be fast.
 
-Once the service is active, subsequent requests will be fast.
+If you are testing the API using **Postman**, you do **not** need to open the service in a browser first.  
+Any HTTP request (browser, Postman, or curl) will wake up the service. However, please ensure the first request is allowed to complete or increase the Postman request timeout if needed.
+
 
 
 
