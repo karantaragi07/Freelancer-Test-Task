@@ -110,7 +110,7 @@ mvn spring-boot:run
 **Application will start at:**
 
 ```
-http://localhost:8080
+http://localhost:8089
 ```
 
 ## 🧠 Implementation Details
@@ -130,8 +130,17 @@ http://localhost:8080
 **Hosted URL:**
 
 ```
-Deployed Link :
+Deployed Link : https://freelancer-test-task-93he.onrender.com
 ```
+## Deployment Note
+
+This application is deployed on **Render (Free Tier)**.
+
+Please note that Render puts free services to sleep after a period of inactivity.  
+If you are accessing the API after some time, the **first request may take up to 30–40 seconds** while the service wakes up.
+
+Once the service is active, subsequent requests will be fast.
+
 
 
 
