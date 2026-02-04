@@ -1,14 +1,27 @@
-# Use official OpenJDK image
-FROM eclipse-temurin:17-jdk-alpine
+# ----------- BUILD STAGE -----------
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy Maven build output
-COPY target/*.jar app.jar
+# Copy pom.xml and download dependencies first (cache-friendly)
+COPY pom.xml .
+RUN mvn dependency:go-offline
 
-# Expose port used by Spring Boot
+# Copy source code
+COPY src ./src
+
+# Build the application
+RUN mvn clean package -DskipTests
+
+
+# ----------- RUN STAGE -----------
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+# Copy jar from build stage
+COPY --from=build /app/target/*.jar app.jar
+
 EXPOSE 8080
 
-# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
